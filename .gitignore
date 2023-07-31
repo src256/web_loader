@@ -58,3 +58,4 @@ projectFilesBackup/
 yarn-debug.log*
 .yarn-integrity
 /cache
+/pkg
