@@ -61,7 +61,7 @@ module WebLoader
         Cache.write(@cache_dir, url, response.code, body) if @use_cache
         return body
       when Net::HTTPRedirection
-        load_page(self.class.to_redirect_url(uri, response['location']), limit - 1)
+        load_page(to_redirect_url(uri, response['location']), limit - 1)
       else
         puts "error #{url}"
         # それ以外は対応した例外を発生
