@@ -4,8 +4,9 @@ class TestWebLoader < Minitest::Test
 
   def test_load_page
     loader = ::WebLoader::Command.new
+    loader.verbose = true
     content = loader.load('https://srcw.net')
-    puts content
+    #    puts content
   end
 
   def test_save_image

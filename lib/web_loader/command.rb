@@ -25,21 +25,23 @@ module WebLoader
       @cache_dir = File.expand_path(CACHE_DIR)
       @user_agent = "#{USER_AGENT}/#{VERSION}"
       @binary = false
+      @verbose = false
     end
 
     attr_reader :load_cache_page
-    attr_accessor :use_cache, :cache_dir, :binary, :user_agent
+    attr_accessor :use_cache, :cache_dir, :binary, :user_agent, :verbose
 
     def load(url, limit = 10)
       raise ArgumentError, 'HTTP redirect too deep' if limit == 0
-
+      log("Load: #{url}", @verbose)
       @load_cache_page = false
       content = try_load_cache(url)
       if content
+        log("Load cache: #{url}", @verbose)
         @load_cache_page = true
         return content
       end
-
+      log("Load server: #{url}", @verbose)
       uri = URI.parse(url)
       http = Net::HTTP.new(uri.host, uri.port)
       if uri.scheme == 'https'
@@ -58,12 +60,15 @@ module WebLoader
           encoding = response.type_params['charset']
           body = toutf8(body, encoding)
         end
-        Cache.write(@cache_dir, url, response.code, body) if @use_cache
+        if @use_cache
+          log("Write cache: #{url}", @verbose)
+          Cache.write(@cache_dir, url, response.code, body)
+        end
         return body
       when Net::HTTPRedirection
         load(to_redirect_url(uri, response['location']), limit - 1)
       else
-        puts "error #{url}"
+        log("error #{url}", true)
         # それ以外は対応した例外を発生
         response.value
       end
@@ -76,5 +81,8 @@ module WebLoader
       Cache.load_content(@cache_dir, url)
     end
 
+    def log(msg, put_log)
+      puts msg if put_log
+    end
   end
 end
