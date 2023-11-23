@@ -5,17 +5,22 @@ module WebLoader
     def toutf8_charset(str, charset)
       # charsetが指定されていない場合はnil
       return nil if charset.to_s.length == 0
-      # 文字列のcharsetを変更する
-      str.force_encoding(charset)
-      # force_encodingが失敗した場合はnil
-      return nil unless str.valid_encoding?
 
       result = nil
-      if charset =~ /#{UTF_8}/i
-        result = str
-      else
-        # エンコーディングがUTF8じゃない場合変換する
-        result = str.encode(UTF_8, invalid: :replace, undef: :replace)
+      begin
+        # 文字列のcharsetを変更する
+        str.force_encoding(charset) # 例外が発生する場合あり。例えば"Shift_JIS"ではなく"Shift-JIS"が渡された場合。
+        # force_encodingが失敗した場合はnil
+        return nil unless str.valid_encoding?
+        result = nil
+        if charset =~ /#{UTF_8}/i
+          result = str
+        else
+          # エンコーディングがUTF8じゃない場合変換する
+          result = str.encode(UTF_8, invalid: :replace, undef: :replace)
+        end
+      rescue => ex
+        puts ex.message
       end
       result
     end

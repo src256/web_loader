@@ -14,10 +14,18 @@ class TestWebLoader < Minitest::Test
     loader.verbose = true
     loader.use_cache = false
     content = loader.load_retry('https://srcw.net')
-    puts content
+    #    puts content
   end
 
   def test_save_image
     ::WebLoader::Command.save_image('https://srcw.net/wiki/image/pukiwiki.png', 'cache/test.png')
+  end
+
+  def test_load_sjis
+    loader = ::WebLoader::Command.new
+    loader.verbose = true
+    loader.use_cache = false
+    content = loader.load('https:/srcw.net')
+    puts content
   end
 end
