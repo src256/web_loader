@@ -12,6 +12,7 @@ module WebLoader
     DEFAULT_RETRY = 3
     DEFAULT_REDIRECT = 10
     DEFAULT_SLEEP = 10
+    CACHE_LIMIT = 3600 # キャッシュが有効な秒数。デフォルトは1時間とする
 
     def self.save_image(url, file)
       # キャッシュせず単に保存する
@@ -29,10 +30,12 @@ module WebLoader
       @user_agent = "#{USER_AGENT}/#{VERSION}"
       @binary = false
       @verbose = false
+      @cache_limit = CACHE_LIMIT
     end
 
     attr_reader :load_cache_page
     attr_accessor :use_cache, :cache_dir, :binary, :user_agent, :verbose
+    attr_accessor :cache_limit
 
     def load_retry(url, retry_count = DEFAULT_RETRY)
       load(url, DEFAULT_REDIRECT, retry_count)
@@ -116,7 +119,7 @@ module WebLoader
     private
     def try_load_cache(url)
       return nil unless @use_cache
-      Cache.clear(@cache_dir)
+      Cache.clear(@cache_dir, @cache_limit)
       Cache.load_content(@cache_dir, url)
     end
 

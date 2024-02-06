@@ -25,7 +25,7 @@ class TestWebLoader < Minitest::Test
     loader = ::WebLoader::Command.new
     loader.verbose = true
     loader.use_cache = false
-    content = loader.load('https:/srcw.net')
+    content = loader.load('https://srcw.net')
     puts content
   end
 end

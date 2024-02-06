@@ -12,7 +12,6 @@ module WebLoader
   class Cache
     PREFIX = "__cache__"
     #    CACHE_LIMIT = 3600
-    CACHE_LIMIT = 60
 
     def self.basename(url)
       Digest::MD5.hexdigest(url)
@@ -43,11 +42,11 @@ module WebLoader
       File.write(content_path, content)
     end
 
-    def self.clear(dir)
+    def self.clear(dir, cache_limit)
       Dir.glob("#{dir}/#{PREFIX}*.{yml,html}").each do |path|
         diff = Time.now - File.mtime(path)
         # 1時間以上昔のキャッシュは使用しない
-        too_old_cache = diff > CACHE_LIMIT
+        too_old_cache = diff > cache_limit
         FileUtils.rm(path) if too_old_cache
       end
     end
