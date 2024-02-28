@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    web_loader (1.4.0)
+    web_loader (1.4.1)
 
 GEM
   remote: https://rubygems.org/

@@ -31,11 +31,13 @@ module WebLoader
       @binary = false
       @verbose = false
       @cache_limit = CACHE_LIMIT
+      @always_write_cache = false
     end
 
     attr_reader :load_cache_page
     attr_accessor :use_cache, :cache_dir, :binary, :user_agent, :verbose
     attr_accessor :cache_limit
+    attr_accessor :always_write_cache
 
     def load_retry(url, retry_count = DEFAULT_RETRY)
       load(url, DEFAULT_REDIRECT, retry_count)
@@ -88,10 +90,10 @@ module WebLoader
           body = toutf8(body, encoding)
         end
 
-#        if @use_cache
-        log("Write cache: #{url}", @verbose)
-        Cache.write(@cache_dir, url, response.code, body)
-        #        end
+        if @use_cache || @always_write_cache
+          log("Write cache: #{url}", @verbose)
+          Cache.write(@cache_dir, url, response.code, body)
+        end
         result = body
       when Net::HTTPRedirection
         result = load(to_redirect_url(uri, response['location']), redirect_count - 1)

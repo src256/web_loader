@@ -26,7 +26,7 @@ class TestWebLoader < Minitest::Test
     loader.verbose = true
     loader.use_cache = false
     content = loader.load('https://srcw.net')
-    puts content
+    #    puts content
   end
 
   def test_load_win1122h2
@@ -35,6 +35,6 @@ class TestWebLoader < Minitest::Test
     loader.verbose = true
     loader.use_cache = false
     content = loader.load('https://learn.microsoft.com/en-us/windows/release-health/status-windows-11-22h2')
-    puts content
+    # puts content
   end
 end
