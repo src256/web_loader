@@ -11,21 +11,21 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
-      <library name="minitest (v5.20.0) [path][gem]" type="rubylib">
+      <library name="minitest (v5.22.0) [path][gem]" type="rubylib">
         <properties>
           <option name="version" value="4" />
         </properties>
         <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.1.0/gems/minitest-5.20.0/lib" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.1.0/gems/minitest-5.20.0/test" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.1.0/gems/minitest-5.22.0/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.1.0/gems/minitest-5.22.0/test" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.1.0/gems/minitest-5.20.0/lib" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.1.0/gems/minitest-5.20.0/test" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.1.0/gems/minitest-5.22.0/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.1.0/gems/minitest-5.22.0/test" />
         </SOURCES>
         <excluded>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.1.0/gems/minitest-5.20.0/test" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.1.0/gems/minitest-5.22.0/test" />
         </excluded>
       </library>
     </orderEntry>

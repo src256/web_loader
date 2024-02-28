@@ -87,10 +87,11 @@ module WebLoader
           encoding = response.type_params['charset']
           body = toutf8(body, encoding)
         end
-        if @use_cache
-          log("Write cache: #{url}", @verbose)
-          Cache.write(@cache_dir, url, response.code, body)
-        end
+
+#        if @use_cache
+        log("Write cache: #{url}", @verbose)
+        Cache.write(@cache_dir, url, response.code, body)
+        #        end
         result = body
       when Net::HTTPRedirection
         result = load(to_redirect_url(uri, response['location']), redirect_count - 1)

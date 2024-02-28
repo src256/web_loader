@@ -2,9 +2,30 @@ module WebLoader
   module Utils
     UTF_8 = 'UTF-8'
 
+    def detect_charset(str)
+      # charsetが指定されていない場合内容からcharsetを判定する
+      # https://learn.microsoft.com/en-us/windows/release-health/status-windows-11-22h2 の場合この処理がないと文字化け
+      # charsetがサーバーから返されず、ASCII-8BITとして判定される。それをKconv.toutf8で変換すると文字化けする
+      # metaタグのcharsetはUTF-8なのでこれを使えば正しいはず
+      charset = nil
+      # Nokogiriの場合 https://qiita.com/tetoralynx/items/273560ad6f75bb685935
+      # <meta\s)(.*)(charset\s*=\s*([\w-]+))(.*)/i
+      if str =~ /<meta.*?charset=["']*([^"']+)/i
+        charset =  $1
+      end
+      charset
+    end
+    # テストのためにmodule_functionを使用
+    module_function :detect_charset
+
     def toutf8_charset(str, charset)
       # charsetが指定されていない場合はnil
-      return nil if charset.to_s.length == 0
+      if charset.to_s.length == 0
+        charset = detect_charset(str)
+      end
+      if charset.to_s.length == 0
+        return nil
+      end
 
       result = nil
       begin
