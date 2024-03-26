@@ -37,4 +37,12 @@ class TestWebLoader < Minitest::Test
     content = loader.load('https://learn.microsoft.com/en-us/windows/release-health/status-windows-11-22h2')
     # puts content
   end
+
+  def test_404_not_found
+    loader = ::WebLoader::Command.new
+    loader.verbose = true
+    loader.use_cache = false
+    content = loader.load_retry('https://srcw.net/aaa.html')
+    puts content
+  end
 end
