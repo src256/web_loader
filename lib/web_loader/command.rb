@@ -33,6 +33,7 @@ module WebLoader
       @cache_limit = CACHE_LIMIT
       @always_write_cache = false
       @response = nil
+      @logger = nil
     end
 
     attr_reader :load_cache_page
@@ -40,6 +41,7 @@ module WebLoader
     attr_accessor :cache_limit
     attr_accessor :always_write_cache
     attr_reader :response
+    attr_accessor :logger
 
     def load_retry(url, retry_count = DEFAULT_RETRY)
       load(url, DEFAULT_REDIRECT, retry_count)
@@ -47,19 +49,19 @@ module WebLoader
 
     def load(url, redirect_count = DEFAULT_REDIRECT, retry_count = 0)
       raise ArgumentError, 'HTTP redirect too deep' if redirect_count == 0
-      log("Load: #{url}", @verbose)
+      log("Load: #{url}")
 
       ##### キャッシュの読み込み
       @load_cache_page = false
       content = try_load_cache(url)
       if content
-        log("Load cache: #{url}", @verbose)
+        log("Load cache: #{url}")
         @load_cache_page = true
         return content
       end
 
       ##### サーバーからロード
-      log("Load server: #{url}", @verbose)
+      log("Load server: #{url}")
       uri = URI.parse(url)
       http = Net::HTTP.new(uri.host, uri.port)
       if uri.scheme == 'https'
@@ -71,7 +73,7 @@ module WebLoader
         @response = http.get(uri.request_uri, 'User-Agent' => @user_agent) # request_uri=path + '?' + query
       rescue Net::ReadTimeout
         # タイムアウトした場合リトライ可能ならばsleepした後に再度ロード実行
-        log("Read timeout: #{url}", @verbose)
+        log("Read timeout: #{url}")
         if retry_count > 0
           sleep DEFAULT_SLEEP
           return load(url, redirect_count , retry_count - 1)
@@ -93,14 +95,14 @@ module WebLoader
         end
 
         if @use_cache || @always_write_cache
-          log("Write cache: #{url}", @verbose)
+          log("Write cache: #{url}")
           Cache.write(@cache_dir, url, @response.code, body)
         end
         result = body
       when Net::HTTPRedirection
         result = load(to_redirect_url(uri, @response['location']), redirect_count - 1)
-      # when Net::HTTPNotFound
-      #   result = nil
+        # when Net::HTTPNotFound
+        #   result = nil
       when Net::HTTPTooManyRequests, Net::ReadTimeout
         # 上記以外のレスポンスの場合、リトライ可能ならばsleepした後に再度ロード実行
         if retry_count > 0
@@ -108,17 +110,16 @@ module WebLoader
           if @response.is_a?(Net::HTTPTooManyRequests)
             # HTTPTooManyRequestsならばretry-afterで指定された値を取得。
             sleep_for = @response.header['retry-after'].to_i + 10
-            log("Rate limit: #{uri} #{@response.header.to_hash} (429 Too Many Requests). Sleeping #{sleep_for} seconds and retry (##{retry_count}).", @verbose)
+            log("Rate limit: #{uri} #{@response.header.to_hash} (429 Too Many Requests). Sleeping #{sleep_for} seconds and retry (##{retry_count}).")
           else
-            log("Unknown response: #{uri} #{@response.inspect}. Sleeping #{sleep_for} seconds and retry (##{retry_count}).", @verbose)
+            log("Unknown response: #{uri} #{@response.inspect}. Sleeping #{sleep_for} seconds and retry (##{retry_count}).")
           end
           sleep sleep_for
           result = load(url, redirect_count , retry_count - 1)
         end
-
+      else
         # それ以外は対応した例外を発生
         log("error #{url}", true)
-        @response.value
       end
       result
     end
@@ -130,8 +131,13 @@ module WebLoader
       Cache.load_content(@cache_dir, url)
     end
 
-    def log(msg, put_log)
-      puts msg if put_log
+    def log(msg, put_log = @verbose)
+      return unless put_log
+      if @logger
+        @logger.info(msg)
+      else
+        puts msg
+      end
     end
   end
 end
