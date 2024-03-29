@@ -45,4 +45,12 @@ class TestWebLoader < Minitest::Test
     content = loader.load_retry('https://srcw.net/aaa.html')
     puts content
   end
+
+  def test_sjis
+    # loader = ::WebLoader::Command.new
+    # loader.verbose = true
+    # loader.use_cache = false
+    # content = loader.load('SJIS Site')
+    # puts content
+  end
 end

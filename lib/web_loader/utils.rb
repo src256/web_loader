@@ -13,6 +13,10 @@ module WebLoader
       if str =~ /<meta.*?charset=["']*([^"']+)/i
         charset =  $1
       end
+      if charset =~ /Shift_JIS/i
+        # Shift_JISの場合、実際はWindows-31J(Windowsの標準コードの場合が多いはず)
+        charset = "Windows-31J"
+      end
       charset
     end
     # テストのためにmodule_functionを使用
@@ -45,6 +49,7 @@ module WebLoader
       end
       result
     end
+    module_function :toutf8_charset
 
     def toutf8(str, charset)
       # 2022/04/04(月)
