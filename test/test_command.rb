@@ -53,4 +53,14 @@ class TestWebLoader < Minitest::Test
     # content = loader.load('SJIS Site')
     # puts content
   end
+
+  def test_load_amazon_monthly
+    # # Amazon月替わりセールのURL
+    # url = 'https://www.amazon.co.jp/s?i=digital-text&rh=n%3A3550442051&srs=3550442051'
+    # loader = ::WebLoader::Command.new
+    # loader.verbose = true
+    # loader.use_cache = true
+    # content = loader.load(url)
+    # puts content
+  end
 end
