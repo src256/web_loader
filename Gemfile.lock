@@ -1,15 +1,16 @@
 PATH
   remote: .
   specs:
-    web_loader (1.7.0)
+    web_loader (1.8.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    minitest (5.22.3)
-    rake (13.1.0)
+    minitest (5.26.1)
+    rake (13.3.1)
 
 PLATFORMS
+  arm64-darwin-24
   x86_64-darwin-22
 
 DEPENDENCIES
@@ -18,4 +19,4 @@ DEPENDENCIES
   web_loader!
 
 BUNDLED WITH
-   2.4.20
+   2.6.3

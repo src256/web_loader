@@ -6,6 +6,7 @@ class TestWebLoader < Minitest::Test
     loader = ::WebLoader::Command.new
     loader.verbose = true
     content = loader.load('https://srcw.net')
+    refute_nil(content)
     #    puts content
   end
 
@@ -14,6 +15,7 @@ class TestWebLoader < Minitest::Test
     loader.verbose = true
     loader.use_cache = false
     content = loader.load_retry('https://srcw.net')
+    refute_nil(content)
     #    puts content
   end
 
@@ -26,6 +28,7 @@ class TestWebLoader < Minitest::Test
     loader.verbose = true
     loader.use_cache = false
     content = loader.load('https://srcw.net')
+    refute_nil(content)
     #    puts content
   end
 
@@ -35,15 +38,17 @@ class TestWebLoader < Minitest::Test
     loader.verbose = true
     loader.use_cache = false
     content = loader.load('https://learn.microsoft.com/en-us/windows/release-health/status-windows-11-22h2')
+    refute_nil(content)
     # puts content
   end
 
   def test_404_not_found
     loader = ::WebLoader::Command.new
-    loader.verbose = true
+    loader.verbose = false
     loader.use_cache = false
     content = loader.load_retry('https://srcw.net/aaa.html')
-    puts content
+    assert_nil(content)
+    #    puts content
   end
 
   def test_sjis

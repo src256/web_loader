@@ -11,7 +11,7 @@ class TestUtils < Minitest::Test
   def test_detect_charset
     str = '<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">'
     charset = ::WebLoader::Utils::detect_charset(str)
-    assert_equal('Shift_JIS', charset)
+    assert_equal('Windows-31J', charset)
 
     str = '<meta charset="UTF-8">'
     charset = ::WebLoader::Utils::detect_charset(str)

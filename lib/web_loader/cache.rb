@@ -37,7 +37,8 @@ module WebLoader
 
     def self.write(dir, url, code, content)
       header_path = header_filename(dir, url)
-      YAML.dump({"url" => url, "code" => code}, open(header_path, "w"))
+      #      YAML.dump({"url" => url, "code" => code}, open(header_path, "w"))
+      File.write(header_path, YAML.dump({ "url" => url, "code" => code }))
       content_path = content_filename(dir, url)
       File.write(content_path, content)
     end
