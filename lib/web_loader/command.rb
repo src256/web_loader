@@ -1,7 +1,6 @@
 require 'open-uri'
 require 'net/http'
 require 'uri'
-require 'kconv'
 
 module WebLoader
   class Command
@@ -23,7 +22,7 @@ module WebLoader
       File.binwrite(file, content)
     end
 
-    def initialize
+    def initialize(driver = ::WebLoader::Drivers::HttpDriver.new)
       @use_cache = true
       @load_cache_page = false #キャッシュを読み込んだかどうか
       @cache_dir = File.expand_path(CACHE_DIR)
@@ -34,12 +33,18 @@ module WebLoader
       @always_write_cache = false
       @response = nil
       @logger = nil
+
+      # ドライバーのセットアップ
+      @driver = driver
+      @driver.user_agent = @user_agent
+      @driver.binary = @binary
     end
 
     attr_reader :load_cache_page
     attr_accessor :use_cache, :cache_dir, :binary, :user_agent, :verbose
     attr_accessor :cache_limit
     attr_accessor :always_write_cache
+    attr_accessor :driver
     attr_reader :response
     attr_accessor :logger
 
@@ -62,15 +67,16 @@ module WebLoader
 
       ##### サーバーからロード
       log("Load server: #{url}")
-      uri = URI.parse(url)
-      http = Net::HTTP.new(uri.host, uri.port)
-      if uri.scheme == 'https'
-        http.use_ssl = true
-        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-      end
-      @response = nil
+      # uri = URI.parse(url)
+      # http = Net::HTTP.new(uri.host, uri.port)
+      # if uri.scheme == 'https'
+      #   http.use_ssl = true
+      #   http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      # end
+      # @response = nil
       begin
-        @response = http.get(uri.request_uri, 'User-Agent' => @user_agent) # request_uri=path + '?' + query
+        #        @response = http.get(uri.request_uri, 'User-Agent' => @user_agent) # request_uri=path + '?' + query
+        @response = @driver.fetch(url)
       rescue Net::ReadTimeout
         # タイムアウトした場合リトライ可能ならばsleepした後に再度ロード実行
         log("Read timeout: #{url}")
@@ -82,38 +88,21 @@ module WebLoader
 
       ##### レスポンスの処理
       result = nil
-      case @response
-      when Net::HTTPSuccess
-        # @responseがNet::HTTPSuccessのサブクラスの場合成功とみなし読み込んだ内容を返す
+      if response.ok?
         body = @response.body
-        unless @binary
-          # デフォルトでは ASCII-8BITが帰ってくる。
-          # Content-Typeのcharsetとみなす。
-          # https://bugs.ruby-lang.org/issues/2567
-          encoding = @response.type_params['charset']
-          body = toutf8(body, encoding)
-        end
-
         if @use_cache || @always_write_cache
           log("Write cache: #{url}")
-          Cache.write(@cache_dir, url, @response.code, body)
+          Cache.write(@cache_dir, url, @response.status, body)
         end
         result = body
-      when Net::HTTPRedirection
-        result = load(to_redirect_url(uri, @response['location']), redirect_count - 1)
-        # when Net::HTTPNotFound
-        #   result = nil
-      when Net::HTTPTooManyRequests, Net::ReadTimeout
+      elsif response.redirect?
+        result = load(to_redirect_url(URI.parse(url), @response.headers['location']), redirect_count - 1)
+      elsif response.rate_limited?
         # 上記以外のレスポンスの場合、リトライ可能ならばsleepした後に再度ロード実行
         if retry_count > 0
-          sleep_for = 10
-          if @response.is_a?(Net::HTTPTooManyRequests)
-            # HTTPTooManyRequestsならばretry-afterで指定された値を取得。
-            sleep_for = @response.header['retry-after'].to_i + 10
-            log("Rate limit: #{uri} #{@response.header.to_hash} (429 Too Many Requests). Sleeping #{sleep_for} seconds and retry (##{retry_count}).")
-          else
-            log("Unknown response: #{uri} #{@response.inspect}. Sleeping #{sleep_for} seconds and retry (##{retry_count}).")
-          end
+          # HTTPTooManyRequestsならばretry-afterで指定された値を取得。
+          sleep_for = @response.header['retry-after'].to_i + 10
+          log("Rate limit: #{uri} #{@response.header.to_hash} (429 Too Many Requests). Sleeping #{sleep_for} seconds and retry (##{retry_count}).")
           sleep sleep_for
           result = load(url, redirect_count , retry_count - 1)
         end
@@ -121,7 +110,51 @@ module WebLoader
         # それ以外は対応した例外を発生
         log("error #{url}", true)
       end
+
       result
+
+          # ##### レスポンスの処理
+      # result = nil
+      # case @response
+      # when Net::HTTPSuccess
+      #   # @responseがNet::HTTPSuccessのサブクラスの場合成功とみなし読み込んだ内容を返す
+      #   body = @response.body
+      #   unless @binary
+      #     # デフォルトでは ASCII-8BITが帰ってくる。
+      #     # Content-Typeのcharsetとみなす。
+      #     # https://bugs.ruby-lang.org/issues/2567
+      #     encoding = @response.type_params['charset']
+      #     body = toutf8(body, encoding)
+      #   end
+      #
+      #   if @use_cache || @always_write_cache
+      #     log("Write cache: #{url}")
+      #     Cache.write(@cache_dir, url, @response.code, body)
+      #   end
+      #   result = body
+      # when Net::HTTPRedirection
+      #   result = load(to_redirect_url(uri, @response['location']), redirect_count - 1)
+      #   # when Net::HTTPNotFound
+      #   #   result = nil
+      # when Net::HTTPTooManyRequests, Net::ReadTimeout
+      #   # 上記以外のレスポンスの場合、リトライ可能ならばsleepした後に再度ロード実行
+      #   if retry_count > 0
+      #     sleep_for = 10
+      #     if @response.is_a?(Net::HTTPTooManyRequests)
+      #       # HTTPTooManyRequestsならばretry-afterで指定された値を取得。
+      #       sleep_for = @response.header['retry-after'].to_i + 10
+      #       log("Rate limit: #{uri} #{@response.header.to_hash} (429 Too Many Requests). Sleeping #{sleep_for} seconds and retry (##{retry_count}).")
+      #     else
+      #       log("Unknown response: #{uri} #{@response.inspect}. Sleeping #{sleep_for} seconds and retry (##{retry_count}).")
+      #     end
+      #     sleep sleep_for
+      #     result = load(url, redirect_count , retry_count - 1)
+      #   end
+      # else
+      #   # それ以外は対応した例外を発生
+      #   log("error #{url}", true)
+      # end
+      # result
     end
 
     private

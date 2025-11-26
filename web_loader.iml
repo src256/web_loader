@@ -10,6 +10,80 @@
     </content>
     <orderEntry type="jdk" jdkName="rbenv: 3.2.6" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="minitest (v5.26.1) [path][gem]" type="rubylib">
+        <properties>
+          <option name="additionalInfo">
+            <AdditionalInfo>
+              <option name="authors" value="該当なし" />
+              <option name="email" value="該当なし" />
+              <option name="homepage" value="該当なし" />
+              <option name="summary" value="該当なし" />
+            </AdditionalInfo>
+          </option>
+          <option name="fromPath" value="true" />
+          <option name="name" value="minitest" />
+          <option name="requirePaths">
+            <list>
+              <option value="lib" />
+            </list>
+          </option>
+          <option name="url" value="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.1" />
+          <option name="version" value="5.26.1" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.1/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.1/test" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.1/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.1/test" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.1/test" />
+        </excluded>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="rake (v13.3.1) [path][gem]" type="rubylib">
+        <properties>
+          <option name="additionalInfo">
+            <AdditionalInfo>
+              <option name="authors" value="該当なし" />
+              <option name="email" value="該当なし" />
+              <option name="homepage" value="該当なし" />
+              <option name="summary" value="該当なし" />
+            </AdditionalInfo>
+          </option>
+          <option name="fromPath" value="true" />
+          <option name="name" value="rake" />
+          <option name="requirePaths">
+            <list>
+              <option value="lib" />
+            </list>
+          </option>
+          <option name="url" value="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.3.1" />
+          <option name="version" value="13.3.1" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.3.1/doc" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.3.1/exe" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.3.1/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.3.1/doc" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.3.1/exe" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.3.1/lib" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.3.1/doc" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.3.1/exe" />
+        </excluded>
+      </library>
+    </orderEntry>
+    <orderEntry type="library" scope="PROVIDED" name="bundler (v2.6.3, rbenv: 3.2.6) [gem]" level="application" />
   </component>
   <component name="RakeTasksCache">
     <option name="myRootTask">

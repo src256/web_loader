@@ -67,6 +67,7 @@ module WebLoader
       end
       result
     end
+    module_function :toutf8
 
     def to_redirect_url(orig_uri, location)
       redirect_url = location
@@ -75,5 +76,6 @@ module WebLoader
       end
       redirect_url
     end
+    module_function :to_redirect_url
   end
 end
