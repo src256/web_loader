@@ -4,58 +4,21 @@ require "web_loader"
 require 'web_loader/drivers/selenium_driver'
 require 'optparse'
 
-class Wl
-  def self.run(argv)
-    STDOUT.sync = true
-    opts = {}
-    opt = OptionParser.new(argv)
-    opt.banner = "Usage: #{opt.program_name} [-h|--help] [Options] <URL> "
-    opt.version = WebLoader::VERSION
-    opt.separator('')
-    opt.separator("Options:")
-    opt.on_head('-h', '--help', 'Show this message') do |v|
-      puts opt.help
-      exit
-    end
-    opt.on('-v', '--verbose', 'Verbose message') {|v| opts[:v] = v}
-    drivers = ['pureruby', 'selenium']
-    opt.on('-d DRIVER', '--driver=DRIVER', drivers, drivers.join("|") + "(default pureruby)") {|v| opts[:d] = v }
-    opt.on("--disable-cache", "Disable cache") {|v| opts[:disable_cache] = v }
-    opt.parse!(argv)
-    if argv.empty?
-      puts "Error: URL is required."
-      puts opt.help
-      exit
-    end
-    command = Wl.new(opts)
-    url = argv[0]
-    command.execute(url)
-  end
 
-  def initialize(opts)
-    @opts = opts
-  end
+result = WebLoader::Downloader.run(ARGV)
+puts result
 
-  def execute(url)
-    driver = create_driver
-    loader = WebLoader::Command.new(driver)
-    if @opts[:disable_cache]
-      loader.use_cache = false
-    end
-    result = loader.load(url)
-    puts result
-  end
-
-  private
-  def create_driver
-    case @opts[:d]
-    when 'selenium'
-      driver = WebLoader::Drivers::SeleniumDriver.new
-    else
-      driver = WebLoader::Drivers::HttpDriver.new
-    end
-    driver
-  end
-end
-
-Wl.run(ARGV)
+# custom downloader example(selenium with custom wait proc)
+#     wl --driver=selenium https://www.example.com
+#
+# class MyDownloader < WebLoader::Downloader
+#   def create_wait_proc
+#     #    puts "Using custom wait proc..."
+#     proc do |driver|
+#       # Example wait condition: wait until the document is fully loaded
+#       driver.execute_script("return document.readyState") == "complete"
+#     end
+#   end
+# end
+# result = MyDownloader.run(ARGV)
+# puts result
