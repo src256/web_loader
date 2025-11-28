@@ -38,7 +38,7 @@ module WebLoader
 
           content_type = driver.execute_script("return document.contentType;")
 
-          body = @binary ? page_source.b : driver.page_source
+          body = @binary ? driver.page_source.b : driver.page_source
           response = WebLoader::Response.new(status: 200,
                                              headers: {
                                                'Content-Type' => content_type

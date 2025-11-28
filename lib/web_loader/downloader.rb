@@ -18,6 +18,8 @@ module WebLoader
       drivers = ['pureruby', 'selenium']
       opt.on('-d DRIVER', '--driver=DRIVER', drivers, drivers.join("|") + "(default pureruby)") {|v| opts[:d] = v }
       opt.on("--disable-cache", "Disable cache") {|v| opts[:disable_cache] = v }
+      opt.on('--user-agent=USERAGENT', 'Set User-Agent header') {|v| opts[:user_agent] = v }
+      opt.on('-b', '--binary', 'Download binary files') {|v| opts[:binary] = v }
       opt.parse!(argv)
       if argv.empty?
         puts "Error: URL is required."
@@ -38,6 +40,12 @@ module WebLoader
       loader = WebLoader::Command.new(driver)
       if @opts[:disable_cache]
         loader.use_cache = false
+      end
+      if @opts[:user_agent]
+        loader.user_agent = @opts[:user_agent]
+      end
+      if @opts[:binary]
+        loader.binary = true
       end
       loader.load(url)
     end
