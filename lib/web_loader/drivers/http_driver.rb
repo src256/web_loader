@@ -6,14 +6,7 @@ require 'kconv'
 
 module WebLoader
   module Drivers
-    class HttpDriver
-
-      def initialize
-        @user_agent = nil
-        @binary = false
-      end
-
-      attr_accessor :user_agent, :binary
+    class HttpDriver < WebLoader::Drivers::BaseDriver
 
       def fetch(url)
         uri = URI.parse(url)
@@ -23,7 +16,24 @@ module WebLoader
           http.verify_mode = OpenSSL::SSL::VERIFY_NONE
         end
         response = http.get(uri.request_uri, 'User-Agent' => @user_agent) # request_uri=path + '?' + query
-        WebLoader::Response.from_net_http(response, @binary)
+        create_response(response)
+      end
+
+      private
+      def create_response(response)
+        body = response.body
+        unless @binary
+          # デフォルトでは ASCII-8BITが帰ってくる。
+          # Content-Typeのcharsetとみなす。
+          # https://bugs.ruby-lang.org/issues/2567
+          encoding = response.type_params['charset']
+          body = ::WebLoader::Utils.toutf8(body, encoding)
+        end
+        ::WebLoader::Response.new(
+          status: response.code.to_i,
+          headers: response.each_header.to_h,
+          body: body
+        )
       end
     end
   end

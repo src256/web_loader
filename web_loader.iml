@@ -11,7 +11,69 @@
     <orderEntry type="jdk" jdkName="rbenv: 3.2.6" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
-      <library name="minitest (v5.26.1) [path][gem]" type="rubylib">
+      <library name="base64 (v0.3.0) [path][gem]" type="rubylib">
+        <properties>
+          <option name="additionalInfo">
+            <AdditionalInfo>
+              <option name="authors" value="該当なし" />
+              <option name="email" value="該当なし" />
+              <option name="homepage" value="該当なし" />
+              <option name="summary" value="該当なし" />
+            </AdditionalInfo>
+          </option>
+          <option name="fromPath" value="true" />
+          <option name="name" value="base64" />
+          <option name="requirePaths">
+            <list>
+              <option value="lib" />
+            </list>
+          </option>
+          <option name="url" value="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/base64-0.3.0" />
+          <option name="version" value="0.3.0" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/base64-0.3.0/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/base64-0.3.0/sig" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/base64-0.3.0/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/base64-0.3.0/sig" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="logger (v1.7.0) [path][gem]" type="rubylib">
+        <properties>
+          <option name="additionalInfo">
+            <AdditionalInfo>
+              <option name="authors" value="該当なし" />
+              <option name="email" value="該当なし" />
+              <option name="homepage" value="該当なし" />
+              <option name="summary" value="該当なし" />
+            </AdditionalInfo>
+          </option>
+          <option name="fromPath" value="true" />
+          <option name="name" value="logger" />
+          <option name="requirePaths">
+            <list>
+              <option value="lib" />
+            </list>
+          </option>
+          <option name="url" value="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/logger-1.7.0" />
+          <option name="version" value="1.7.0" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/logger-1.7.0/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/logger-1.7.0/lib" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="minitest (v5.26.2) [path][gem]" type="rubylib">
         <properties>
           <option name="additionalInfo">
             <AdditionalInfo>
@@ -28,20 +90,20 @@
               <option value="lib" />
             </list>
           </option>
-          <option name="url" value="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.1" />
-          <option name="version" value="5.26.1" />
+          <option name="url" value="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.2" />
+          <option name="version" value="5.26.2" />
         </properties>
         <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.1/lib" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.1/test" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.2/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.2/test" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.1/lib" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.1/test" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.2/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.2/test" />
         </SOURCES>
         <excluded>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.1/test" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.2/test" />
         </excluded>
       </library>
     </orderEntry>
@@ -80,6 +142,149 @@
         <excluded>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.3.1/doc" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.3.1/exe" />
+        </excluded>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="rexml (v3.4.4) [path][gem]" type="rubylib">
+        <properties>
+          <option name="additionalInfo">
+            <AdditionalInfo>
+              <option name="authors" value="該当なし" />
+              <option name="email" value="該当なし" />
+              <option name="homepage" value="該当なし" />
+              <option name="summary" value="該当なし" />
+            </AdditionalInfo>
+          </option>
+          <option name="fromPath" value="true" />
+          <option name="name" value="rexml" />
+          <option name="requirePaths">
+            <list>
+              <option value="lib" />
+            </list>
+          </option>
+          <option name="url" value="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rexml-3.4.4" />
+          <option name="version" value="3.4.4" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rexml-3.4.4/doc" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rexml-3.4.4/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rexml-3.4.4/doc" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rexml-3.4.4/lib" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rexml-3.4.4/doc" />
+        </excluded>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="rubyzip (v3.2.2) [path][gem]" type="rubylib">
+        <properties>
+          <option name="additionalInfo">
+            <AdditionalInfo>
+              <option name="authors" value="該当なし" />
+              <option name="email" value="該当なし" />
+              <option name="homepage" value="該当なし" />
+              <option name="summary" value="該当なし" />
+            </AdditionalInfo>
+          </option>
+          <option name="fromPath" value="true" />
+          <option name="name" value="rubyzip" />
+          <option name="requirePaths">
+            <list>
+              <option value="lib" />
+            </list>
+          </option>
+          <option name="url" value="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rubyzip-3.2.2" />
+          <option name="version" value="3.2.2" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rubyzip-3.2.2/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rubyzip-3.2.2/samples" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rubyzip-3.2.2/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rubyzip-3.2.2/samples" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rubyzip-3.2.2/samples" />
+        </excluded>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="selenium-webdriver (v4.38.0) [path][gem]" type="rubylib">
+        <properties>
+          <option name="additionalInfo">
+            <AdditionalInfo>
+              <option name="authors" value="該当なし" />
+              <option name="email" value="該当なし" />
+              <option name="homepage" value="該当なし" />
+              <option name="summary" value="該当なし" />
+            </AdditionalInfo>
+          </option>
+          <option name="fromPath" value="true" />
+          <option name="name" value="selenium-webdriver" />
+          <option name="requirePaths">
+            <list>
+              <option value="lib" />
+            </list>
+          </option>
+          <option name="url" value="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/selenium-webdriver-4.38.0" />
+          <option name="version" value="4.38.0" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/selenium-webdriver-4.38.0/bin" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/selenium-webdriver-4.38.0/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/selenium-webdriver-4.38.0/bin" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/selenium-webdriver-4.38.0/lib" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/selenium-webdriver-4.38.0/bin" />
+        </excluded>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="websocket (v1.2.11) [path][gem]" type="rubylib">
+        <properties>
+          <option name="additionalInfo">
+            <AdditionalInfo>
+              <option name="authors" value="該当なし" />
+              <option name="email" value="該当なし" />
+              <option name="homepage" value="該当なし" />
+              <option name="summary" value="該当なし" />
+            </AdditionalInfo>
+          </option>
+          <option name="fromPath" value="true" />
+          <option name="name" value="websocket" />
+          <option name="requirePaths">
+            <list>
+              <option value="lib" />
+            </list>
+          </option>
+          <option name="url" value="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/websocket-1.2.11" />
+          <option name="version" value="1.2.11" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/websocket-1.2.11/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/websocket-1.2.11/spec" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/websocket-1.2.11/.github" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/websocket-1.2.11/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/websocket-1.2.11/spec" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/websocket-1.2.11/.github" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/websocket-1.2.11/spec" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/websocket-1.2.11/.github" />
         </excluded>
       </library>
     </orderEntry>

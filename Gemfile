@@ -2,9 +2,11 @@
 
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in web_loader.gemspec
+# Specify your gem's dependencies in wl.gemspec
 gemspec
 
 gem "rake", "~> 13.0"
 
 gem "minitest", "~> 5.0"
+
+gem 'selenium-webdriver'
