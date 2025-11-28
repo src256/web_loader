@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    wl (2.1.0)
+    web_loader (2.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -28,7 +28,7 @@ DEPENDENCIES
   minitest (~> 5.0)
   rake (~> 13.0)
   selenium-webdriver
-  wl!
+  web_loader!
 
 BUNDLED WITH
    2.6.3

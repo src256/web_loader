@@ -3,7 +3,7 @@
 require_relative "lib/web_loader/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "wl"
+  spec.name = "web_loader"
   spec.version = WebLoader::VERSION
   spec.authors = ["src"]
   spec.email = ["src@srcw.net"]
