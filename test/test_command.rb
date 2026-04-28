@@ -33,6 +33,7 @@ class TestWebLoader < Minitest::Test
   end
 
   def test_load_win1122h2
+    skip "対象URLが404のためスキップ"
     # 何故か文字化けする
     loader = ::WebLoader::Command.new
     loader.verbose = true
