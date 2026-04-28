@@ -61,4 +61,5 @@ yarn-debug.log*
 /cache
 /pkg
 log.*
+.claude/settings.local.json
 
