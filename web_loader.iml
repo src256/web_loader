@@ -73,7 +73,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="minitest (v5.26.2) [path][gem]" type="rubylib">
+      <library name="minitest (v5.27.0) [path][gem]" type="rubylib">
         <properties>
           <option name="additionalInfo">
             <AdditionalInfo>
@@ -90,25 +90,25 @@
               <option value="lib" />
             </list>
           </option>
-          <option name="url" value="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.2" />
-          <option name="version" value="5.26.2" />
+          <option name="url" value="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.27.0" />
+          <option name="version" value="5.27.0" />
         </properties>
         <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.2/lib" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.2/test" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.27.0/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.27.0/test" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.2/lib" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.2/test" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.27.0/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.27.0/test" />
         </SOURCES>
         <excluded>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.26.2/test" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/minitest-5.27.0/test" />
         </excluded>
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="rake (v13.3.1) [path][gem]" type="rubylib">
+      <library name="rake (v13.4.2) [path][gem]" type="rubylib">
         <properties>
           <option name="additionalInfo">
             <AdditionalInfo>
@@ -125,23 +125,23 @@
               <option value="lib" />
             </list>
           </option>
-          <option name="url" value="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.3.1" />
-          <option name="version" value="13.3.1" />
+          <option name="url" value="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.4.2" />
+          <option name="version" value="13.4.2" />
         </properties>
         <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.3.1/doc" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.3.1/exe" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.3.1/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.4.2/doc" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.4.2/exe" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.4.2/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.3.1/doc" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.3.1/exe" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.3.1/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.4.2/doc" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.4.2/exe" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.4.2/lib" />
         </SOURCES>
         <excluded>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.3.1/doc" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.3.1/exe" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.4.2/doc" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rake-13.4.2/exe" />
         </excluded>
       </library>
     </orderEntry>
@@ -216,7 +216,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="selenium-webdriver (v4.38.0) [path][gem]" type="rubylib">
+      <library name="selenium-webdriver (v4.43.0) [path][gem]" type="rubylib">
         <properties>
           <option name="additionalInfo">
             <AdditionalInfo>
@@ -233,20 +233,20 @@
               <option value="lib" />
             </list>
           </option>
-          <option name="url" value="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/selenium-webdriver-4.38.0" />
-          <option name="version" value="4.38.0" />
+          <option name="url" value="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/selenium-webdriver-4.43.0" />
+          <option name="version" value="4.43.0" />
         </properties>
         <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/selenium-webdriver-4.38.0/bin" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/selenium-webdriver-4.38.0/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/selenium-webdriver-4.43.0/bin" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/selenium-webdriver-4.43.0/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/selenium-webdriver-4.38.0/bin" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/selenium-webdriver-4.38.0/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/selenium-webdriver-4.43.0/bin" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/selenium-webdriver-4.43.0/lib" />
         </SOURCES>
         <excluded>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/selenium-webdriver-4.38.0/bin" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/selenium-webdriver-4.43.0/bin" />
         </excluded>
       </library>
     </orderEntry>

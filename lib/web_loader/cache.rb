@@ -35,10 +35,9 @@ module WebLoader
       content
     end
 
-    def self.write(dir, url, code, content)
+    def self.write(dir, url, code, content, driver: nil)
       header_path = header_filename(dir, url)
-      #      YAML.dump({"url" => url, "code" => code}, open(header_path, "w"))
-      File.write(header_path, YAML.dump({ "url" => url, "code" => code }))
+      File.write(header_path, YAML.dump({ "url" => url, "code" => code, "driver" => driver }))
       content_path = content_filename(dir, url)
       File.write(content_path, content)
     end

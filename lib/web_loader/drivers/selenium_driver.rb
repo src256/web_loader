@@ -11,6 +11,10 @@ module WebLoader
       attr_accessor :wait_proc
       attr_accessor :wait_seconds
 
+      def driver_name
+        "selenium"
+      end
+
       def fetch(url)
         require 'selenium-webdriver'
 

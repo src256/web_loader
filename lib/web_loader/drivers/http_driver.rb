@@ -8,6 +8,10 @@ module WebLoader
   module Drivers
     class HttpDriver < WebLoader::Drivers::BaseDriver
 
+      def driver_name
+        "http"
+      end
+
       def fetch(url)
         uri = URI.parse(url)
         http = Net::HTTP.new(uri.host, uri.port)

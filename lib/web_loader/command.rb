@@ -84,7 +84,7 @@ module WebLoader
         body = @response.body
         if @use_cache || @always_write_cache
           log("Write cache: #{url}")
-          Cache.write(@cache_dir, url, @response.status, body)
+          Cache.write(@cache_dir, url, @response.status, body, driver: @driver.driver_name)
         end
         result = body
       elsif response.redirect?

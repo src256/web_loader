@@ -12,6 +12,10 @@ module WebLoader
         raise NotImplementedError, 'Subclasses must implement the fetch method'
       end
 
+      def driver_name
+        raise NotImplementedError, 'Subclasses must implement the driver_name method'
+      end
+
     end
   end
 end
