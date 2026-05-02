@@ -20,11 +20,18 @@ module WebLoader
       opt.on("--disable-cache", "Disable cache") {|v| opts[:disable_cache] = v }
       opt.on('--user-agent=USERAGENT', 'Set User-Agent header') {|v| opts[:user_agent] = v }
       opt.on('-b', '--binary', 'Download binary files') {|v| opts[:binary] = v }
-      opt.parse!(argv)
-      if argv.empty?
-        puts "Error: URL is required."
+      opt.on('--cache-dir=DIR', 'Cache directory (default ./cache)') {|v| opts[:cache_dir] = v }
+      begin
+        opt.parse!(argv)
+      rescue OptionParser::ParseError => e
+        warn "Error: #{e.message}"
         puts opt.help
-        exit
+        exit 1
+      end
+      if argv.empty?
+        warn "Error: URL is required."
+        puts opt.help
+        exit 1
       end
       command = self.new(opts)
       url = argv[0]
@@ -46,6 +53,9 @@ module WebLoader
       end
       if @opts[:binary]
         loader.binary = true
+      end
+      if @opts[:cache_dir]
+        loader.cache_dir = File.expand_path(@opts[:cache_dir])
       end
       loader.load(url)
     end

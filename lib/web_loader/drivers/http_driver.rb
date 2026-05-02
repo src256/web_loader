@@ -9,7 +9,7 @@ module WebLoader
     class HttpDriver < WebLoader::Drivers::BaseDriver
 
       def driver_name
-        "http"
+        "pureruby"
       end
 
       def fetch(url)
